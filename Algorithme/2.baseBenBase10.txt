@@ -1,0 +1,12 @@
+contexte : n en base b -> x en base 10
+    
+// declaration de variable    
+nombre
+a = chaqueElement(nombre) // a sera une liste
+k = a.longueur - 1   
+basedorigine 
+
+resultat = 0
+
+    pour i allant de 0 a k:
+    resultat += a[i]*basedorigine**i

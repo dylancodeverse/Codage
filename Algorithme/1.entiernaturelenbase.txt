@@ -8,5 +8,7 @@ contexte: n base 10 -> n base >=2 (methode division successive)
     tant que nombre/basecible >basecible:
         reste.ajouteraudebut(nombre%basecible)
         nombre = nombre/basecible
-        
+
     reste.ajouteraudebut(nombre)    
+
+    reponse : chaque element de reste
