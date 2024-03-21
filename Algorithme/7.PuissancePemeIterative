@@ -1,0 +1,6 @@
+puissance(nombre,puissance):
+    resultat = 1
+    pour i allant 0 a puissance:
+        resultat= resultat * nombre
+    retourner resultat
+    
