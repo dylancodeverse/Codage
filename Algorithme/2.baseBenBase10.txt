@@ -9,4 +9,4 @@ basedorigine
 resultat = 0
 
     pour i allant de 0 a k:
-    resultat += a[i]*basedorigine**i
+        resultat += a[i]*basedorigine**i

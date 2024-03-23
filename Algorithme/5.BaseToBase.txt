@@ -1,0 +1,16 @@
+contexte : n en base b ->b1
+
+// declaration de variable
+nombre
+a = chaqueElement(nombre) // a sera une liste
+k = a.longueur - 1   
+basedorigine 
+basecible
+
+resultat = 0
+        resultat += a[i]*basedorigine**i
+
+    pour i allant de 0 a k:
+        additionBase(resultat , multiplicationBase(a[i],PuissanceDansBase(basedorigine,i ,basecible),basecible),basecible)
+
+        
