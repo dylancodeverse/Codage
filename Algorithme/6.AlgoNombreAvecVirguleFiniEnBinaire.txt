@@ -1,0 +1,25 @@
+contexte : decimal avec virgule fin en binaire avec virgule
+
+soit:
+nombre
+resultEntiere = [] //liste
+resultDecimale = [] // liste
+
+partieEntiere = partieEntiere(nombre)
+partieDecimale = partieDecimale(nombre)
+
+// obtention de resultEntiere
+
+tant que partieEntiere >=2:
+    resultEntiere.ajouter (partieEntiere%2)
+    partieEntiere = partieEntiere/2
+
+resultEntiere.ajouter(partieEntiere)
+
+tant que partieDecimale !=[0]
+    nombredepassage = ecritureSC(partieDecimale)
+    nombredepassage2 = partieEntiere(nombredepassage*2)
+    resultDecimale.ajouter(partieEntiere(nombredepassage2))
+    partieDecimale = partieDecimale(nombredepassage2)
+
+
