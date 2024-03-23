@@ -1,0 +1,8 @@
+evaluationEnBaseDecimale(n ,b):
+    nlist = list(n)
+    k=nlist-1
+    resultat=nlist[k]*b +nlist[k-1]
+    pour i allant de k-2 a 0 avec k-=1:
+        resultat = resultat * b + nlist[i]
+    
+    retourner resultat        
