@@ -1,0 +1,5 @@
+puissance(nombre,p):
+    resultat=1
+    if p !=0
+        resultat= nombre *puissance(nombre,p-1)    
+    retourner resultat    
