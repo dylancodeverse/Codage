@@ -1,0 +1,12 @@
+
+puissance(m,p):
+    si p =0:
+        retourner 1
+    sinon si p = 1:
+        retourner m
+    sinon si p%2==0:
+        retourner puissance(m*m,p/2)
+    sinon :
+        retourner puissance(m*m,(p-1)/2)
+        
+                             
