@@ -1,0 +1,14 @@
+
+
+reelEnBinaire(nreel, precision)
+    representationBinaire
+    si  avecVirgule(nreel):
+        representationBinaire = binaireAvecVirgule(nreel,precision)
+    sinon:
+        representationBinaire= nombreEnBinaire(nreel)
+
+    si nreel<0: // negatif
+        representationBinaire= shift(representationBinaire)
+        representationBinaire = sumBinaire(representationBinaire,1)
+
+    retourner representationBinaire        
