@@ -4,7 +4,7 @@ contexte: n base 10 -> n base >=2 (methode division successive)
     reste = []
     basecible 
     nombre 
-
+ 
     tant que nombre/basecible >basecible:
         reste.ajouteraudebut(nombre%basecible)
         nombre = nombre/basecible
