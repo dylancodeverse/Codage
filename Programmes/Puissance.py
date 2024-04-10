@@ -24,7 +24,11 @@ def puissanceExponentiation(nombre, puissance):
 
 # print(puissanceExponentiation(4,2))    
 def evaluationEnBaseDecimaleRuffiniHorner(nombre :str , baseDOrigine:int):
-    
+    if len(nombre)== 1:
+        return int(nombre) 
+    v0 = int(nombre[0])*baseDOrigine + int( nombre[1])
+    for lettre in nombre[2::]:
+        v0 = v0 *baseDOrigine + int( lettre)
+    return v0                
 
-print( evaluationEnBaseDecimaleRuffiniHorner('101',2))
-
+print(evaluationEnBaseDecimaleRuffiniHorner('1',2)) 

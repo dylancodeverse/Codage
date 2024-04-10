@@ -1,5 +1,7 @@
 evaluationEnBaseDecimale(n ,b):
+    si longueur (n) ==1:
+        retourner n
     v0 = n[0]*b + n[1]
-    pour lettre dans n[1::]:
-        v1 = v0 *b + lettre
-        v0=v1
+    pour lettre dans n[2::]:
+        v0 = v0 *b + lettre
+    retourner v0    
