@@ -1,8 +1,5 @@
 evaluationEnBaseDecimale(n ,b):
-    nlist = list(n)
-    k=nlist-1
-    resultat=nlist[k]*b +nlist[k-1]
-    pour i allant de k-2 a 0 avec k-=1:
-        resultat = resultat * b + nlist[i]
-    
-    retourner resultat        
+    v0 = n[0]*b + n[1]
+    pour lettre dans n[1::]:
+        v1 = v0 *b + lettre
+        v0=v1

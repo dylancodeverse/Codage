@@ -12,3 +12,19 @@ def puissanceRecursive(nombre ,puissance):
         resultat= nombre * puissanceRecursive(nombre , puissance-1)
     return resultat
 
+def puissanceExponentiation(nombre, puissance):
+    if puissance==0:
+        return 1
+    elif puissance==1:
+        return nombre
+    elif puissance%2==0:
+        return puissanceExponentiation(nombre*nombre,puissance/2)
+    else :
+        return puissanceExponentiation(nombre*nombre ,(puissance-1)/2)
+
+# print(puissanceExponentiation(4,2))    
+def evaluationEnBaseDecimaleRuffiniHorner(nombre :str , baseDOrigine:int):
+    
+
+print( evaluationEnBaseDecimaleRuffiniHorner('101',2))
+
