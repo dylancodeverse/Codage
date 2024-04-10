@@ -54,11 +54,57 @@ def binaireEnOctalMethodeBloc (nombre:str):
 
     return ''.join(resultat)        
 
-print(binaireEnOctalMethodeBloc('1010001'))
+# print(binaireEnOctalMethodeBloc('1010001'))
 
+# ------------------------
+def est_puissance(B, A):
+    # Vérifier si A est égal à 1, car B^0 = 1 pour tout B différent de 0
+    if A == 1:
+        return True, 0
+
+    # Initialiser x à 1
+    x = 1
+    # Initialiser la valeur de B^x
+    puissance = B
+
+    # Tant que la puissance est inférieure à A
+    while puissance < A:
+        # Incrémenter x
+        x += 1
+        # Calculer la nouvelle puissance de B
+        puissance *= B
+
+    # Si la puissance est égale à A, alors A est une puissance de B
+    if puissance == A:
+        return True, x
+    else:
+        return False, None
+# ------------------------
+
+def baseToBaseMethodBloc (nombre :str , baseDorigine:int, dictionnaireBaseDorigine :dict , baseCible:int, dictionnaireBaseCible:dict):
+    # verifier si on peut utiliser la methode en bloc
+    prediction , p = est_puissance(baseDorigine ,baseCible)
+    if prediction:
+        blocs_inverses = [nombre[::-1][i:i+p] for i in range(0, len(nombre), p)]
+        blocs_originaux = [bloc[::-1].zfill(p) for bloc in blocs_inverses]
+        blocs_originaux = blocs_originaux[::-1]
+        resultat= []
+        for bloc in blocs_originaux :
+            b10 = str(enBase10(bloc ,baseDorigine,dictionnaireBaseDorigine))
+            if dictionnaireBaseCible != None and  dictionnaireBaseCible.get(b10):
+                resultat.append( dictionnaireBaseCible.get(b10))
+            else:
+                resultat.append(b10)
+
+        return ''.join(resultat)        
+    else :
+        raise ValueError('methode bloc impossible')
+
+print(baseToBaseMethodBloc('1010001',2,None ,8,None))
 
 def baseToBasePassantParLaBase10 (nombre :str , baseDorigine:int, dictionnaireBaseDorigine :dict , baseCible:int, dictionnaireBaseCible:dict):
     nombreEnBase10 = enBase10(nombre,baseDorigine,dictionnaireBaseDorigine)
     return base10EnAutreBase(baseCible,nombreEnBase10, dictionnaireBaseCible)
 
-print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
+# print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
+
