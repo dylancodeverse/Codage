@@ -131,5 +131,6 @@ def decimalEnBinaire (nombre , precision =200):
     return resultEntiere +'.' + (resultDecimale)
 
 
-print(decimalEnBinaire(0.25))
+# print(decimalEnBinaire(0.25))
+
 
