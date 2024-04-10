@@ -1,4 +1,6 @@
-def base10EnAutreBase (basecible:int , nombre:int , dictionnaire :dict):
+def base10EnAutreBase ( nombre:int,basecible:int , dictionnaire :dict):
+    if nombre ==0:
+        return '0'
     # division successive
     reste = []
     while nombre !=0 :
@@ -10,7 +12,7 @@ def base10EnAutreBase (basecible:int , nombre:int , dictionnaire :dict):
 
     return ''.join(reste)
 
-# print(base10EnAutreBase(8,81,None)) 
+# print(base10EnAutreBase(81,8,None)) 
 
 
 # mbola tsy mazaka anle misy lettre
@@ -106,7 +108,28 @@ def baseToBasePassantParLaBase10 (nombre :str , baseDorigine:int, dictionnaireBa
         return baseToBaseMethodBloc(nombre , baseDorigine , dictionnaireBaseDorigine,baseCible ,dictionnaireBaseCible)
     except ValueError:
         nombreEnBase10 = enBase10(nombre,baseDorigine,dictionnaireBaseDorigine)
-        return base10EnAutreBase(baseCible,nombreEnBase10, dictionnaireBaseCible)
+        return base10EnAutreBase(nombreEnBase10 ,baseCible, dictionnaireBaseCible)
 
-print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
+# print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
+
+
+def decimalEnBinaire (nombre , precision =200):
+
+    partieEntiere = int(nombre)
+    partieDecimale = nombre - partieEntiere
+    # obtention de resultEntiere
+    resultEntiere = base10EnAutreBase(partieEntiere,2,None)
+    resultDecimale= ''
+    while partieDecimale != 0 :
+        nombreDePassage =  (partieDecimale*2)
+        resultDecimale= resultDecimale+ (str(int(nombreDePassage)))
+        partieDecimale = nombreDePassage -int(nombreDePassage) 
+        precision -=1
+        if precision ==0:
+            break         
+        
+    return resultEntiere +'.' + (resultDecimale)
+
+
+print(decimalEnBinaire(0.25))
 

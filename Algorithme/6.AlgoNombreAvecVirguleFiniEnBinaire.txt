@@ -12,16 +12,15 @@ partieDecimale = partieDecimale(nombre)
 
 // obtention de resultEntiere
 
-tant que partieEntiere >=2:
+tant que partieEntiere != 0:
     resultEntiere.ajouter (partieEntiere%2)
     partieEntiere = partieEntiere/2
 
-resultEntiere.ajouter(partieEntiere)
 
 tant que partieDecimale !=[0] ou precision !=0
     nombredepassage = ecritureSC(partieDecimale)
     // ecritureSC == 0,zavatra
-    nombredepassage2 = partieEntiere(nombredepassage*2)
+    nombredepassage2 = (nombredepassage*2)
     resultDecimale.ajouter(partieEntiere(nombredepassage2))
     partieDecimale = partieDecimale(nombredepassage2)
     precision--
