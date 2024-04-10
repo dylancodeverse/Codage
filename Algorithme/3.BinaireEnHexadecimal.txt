@@ -7,9 +7,10 @@ k = a.longueur - 1
 basedorigine 
 
 resultat = 0
-        resultat += a[i]*basedorigine**i
 
     pour i allant de 0 a k:
         additionBaseHexadecimal(resultat , multiplicationBaseHexaDecimal(a[i],PuissanceDansBaseHexaDecimal(basedorigine,i)))
 
-        
+
+
+===========================
