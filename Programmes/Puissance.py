@@ -6,4 +6,9 @@ def puissanceIterative(nombre, puissance):
 
 # print(puissanceIterative(4,0))    
 
+def puissanceRecursive(nombre ,puissance):
+    resultat=1
+    if puissance!=0:
+        resultat= nombre * puissanceRecursive(nombre , puissance-1)
+    return resultat
 
