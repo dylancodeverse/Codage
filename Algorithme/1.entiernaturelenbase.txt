@@ -3,9 +3,9 @@ contexte: n base 10 -> n base >=2 (methode division successive)
 // declaration de variables
     reste = []
     basecible 
-    nombre 
+    nombre =nombre/basecible
  
-    tant que nombre/basecible >basecible:
+    tant que  nombre>=basecible:
         reste.ajouteraudebut(nombre%basecible)
         nombre = nombre/basecible
 
