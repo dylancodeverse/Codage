@@ -95,16 +95,18 @@ def baseToBaseMethodBloc (nombre :str , baseDorigine:int, dictionnaireBaseDorigi
                 resultat.append( dictionnaireBaseCible.get(b10))
             else:
                 resultat.append(b10)
-
         return ''.join(resultat)        
     else :
         raise ValueError('methode bloc impossible')
 
-print(baseToBaseMethodBloc('1010001',2,None ,8,None))
+# print(baseToBaseMethodBloc('1010001',2,None ,8,None))
 
 def baseToBasePassantParLaBase10 (nombre :str , baseDorigine:int, dictionnaireBaseDorigine :dict , baseCible:int, dictionnaireBaseCible:dict):
-    nombreEnBase10 = enBase10(nombre,baseDorigine,dictionnaireBaseDorigine)
-    return base10EnAutreBase(baseCible,nombreEnBase10, dictionnaireBaseCible)
+    try:
+        return baseToBaseMethodBloc(nombre , baseDorigine , dictionnaireBaseDorigine,baseCible ,dictionnaireBaseCible)
+    except ValueError:
+        nombreEnBase10 = enBase10(nombre,baseDorigine,dictionnaireBaseDorigine)
+        return base10EnAutreBase(baseCible,nombreEnBase10, dictionnaireBaseCible)
 
-# print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
+print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
 
