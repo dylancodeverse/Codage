@@ -6,6 +6,10 @@ def puissanceIterative(nombre, puissance):
 
 # print(puissanceIterative(4,0))    
 
+x=0
+for i in range(0,15):
+    x+=puissanceIterative(2,i)
+    print(x)
 def puissanceRecursive(nombre ,puissance):
     resultat=1
     if puissance!=0:
@@ -31,4 +35,4 @@ def evaluationEnBaseDecimaleRuffiniHorner(nombre :str , baseDOrigine:int):
         v0 = v0 *baseDOrigine + int( lettre)
     return v0                
 
-print(evaluationEnBaseDecimaleRuffiniHorner('1',2)) 
+# print(evaluationEnBaseDecimaleRuffiniHorner('1',2)) 

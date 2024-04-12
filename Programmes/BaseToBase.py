@@ -28,6 +28,7 @@ def enBase10(nombre:str, baseDOrigine:int , dictionnaire :dict ):
         i+=1
     return resultat
 
+# print(enBase10('11011100000000000000000',2,None))
 # print(enBase10('1010001',2, {'A':10, 'B':11, 'C':12 ,'D':13, 'E':14, 'F':15 } )) 
 
 
@@ -131,6 +132,20 @@ def decimalEnBinaire (nombre , precision =200):
     return resultEntiere +'.' + (resultDecimale)
 
 
-# print(decimalEnBinaire(0.25))
+# print(decimalEnBinaire(29.75))
+
+
+
+def reelEnBinaire (reel :str , precision:int) :
+    if (reel.find('.')!=-1):
+        representationEnBinaire = decimalEnBinaire(reel.removeprefix('-'),precision)
+    else :
+        representationEnBinaire = base10EnAutreBase(int(reel),2,None)        
+
+    if(reel.find('-')):
+        representationEnBinaire
+
+    return representationEnBinaire
+print('-22.75'.removeprefix('-'))
 
 
