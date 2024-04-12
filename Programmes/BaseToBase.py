@@ -114,7 +114,7 @@ def baseToBasePassantParLaBase10 (nombre :str , baseDorigine:int, dictionnaireBa
 # print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
 
 
-def decimalEnBinaire (nombre , precision =200):
+def decimalEnBinaire (nombre :float, precision =200):
 
     partieEntiere = int(nombre)
     partieDecimale = nombre - partieEntiere
@@ -134,18 +134,50 @@ def decimalEnBinaire (nombre , precision =200):
 
 # print(decimalEnBinaire(29.75))
 
+def complementADeux(binaire:str):
+    newbin=''
+    for x in binaire:
+        if x=='0':
+            newbin += '1' 
+        elif x == '1':
+            newbin+='0'      
+        else :
+            newbin+=x                  
+    newBinAsFloat = float(newbin)
+    newBinAsFloat+=1
+    newbin = str(newBinAsFloat)
+    while newbin.find('2')!=-1:
+        indexx = newbin.find('2') 
+        newbin = newbin.replace('2','0')
+        if indexx !=0:
+            indexx-=1
+            newbin2 =''
+            i =0
+            for x in newbin :
+                if i == indexx:                        
+                    newbin2 += str(int(x)+1)
+                else:
+                    newbin2 +=x 
+                i+=1    
+            newbin = newbin2                                               
+        else :
+            newbin = '1'+newbin
+
+    return newbin
+# print(complementADeux('100.11'))
 
 
 def reelEnBinaire (reel :str , precision:int) :
     if (reel.find('.')!=-1):
-        representationEnBinaire = decimalEnBinaire(reel.removeprefix('-'),precision)
+        representationEnBinaire = decimalEnBinaire(float(reel.removeprefix('-')),precision)
     else :
         representationEnBinaire = base10EnAutreBase(int(reel),2,None)        
 
-    if(reel.find('-')):
-        representationEnBinaire
+    if(reel.find('-')!=-1):
+        representationEnBinaire = complementADeux(representationEnBinaire)
 
     return representationEnBinaire
-print('-22.75'.removeprefix('-'))
 
+print( reelEnBinaire('-29.75',4))
+# print(int('29.75'))
 
