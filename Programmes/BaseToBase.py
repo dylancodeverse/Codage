@@ -114,7 +114,7 @@ def baseToBasePassantParLaBase10 (nombre :str , baseDorigine:int, dictionnaireBa
 # print(baseToBasePassantParLaBase10('1010001' , 2 ,None , 8 ,None))
 
 
-def decimalEnBinaire (nombre :float, precision =200):
+def decimalEnBinairePositif (nombre :float, precision =200):
 
     partieEntiere = int(nombre)
     partieDecimale = nombre - partieEntiere
@@ -132,7 +132,7 @@ def decimalEnBinaire (nombre :float, precision =200):
     return resultEntiere +'.' + (resultDecimale)
 
 
-# print(decimalEnBinaire(29.75))
+print(decimalEnBinairePositif(29.75))
 
 def complementADeux(binaire:str):
     newbin=''
@@ -169,15 +169,14 @@ def complementADeux(binaire:str):
 
 def reelEnBinaire (reel :str , precision:int) :
     if (reel.find('.')!=-1):
-        representationEnBinaire = decimalEnBinaire(float(reel.removeprefix('-')),precision)
+        representationEnBinaire = decimalEnBinairePositif(float(reel.removeprefix('-')),precision)
     else :
         representationEnBinaire = base10EnAutreBase(int(reel),2,None)        
 
     if(reel.find('-')!=-1):
-        representationEnBinaire = complementADeux(representationEnBinaire)
+        representationEnBinaire = '-'+  representationEnBinaire
 
     return representationEnBinaire
 
-print( reelEnBinaire('-29.75',4))
-# print(int('29.75'))
+print(reelEnBinaire('-29.75',4))
 
