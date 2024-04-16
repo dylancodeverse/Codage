@@ -71,11 +71,31 @@ def charcountDESC(message:str)->list[BinaryTree]:
 
 def insert_sorted(lst:list[BinaryTree], val:BinaryTree):
     index = 0
-    while index < len(lst) and lst[index].freq >= val.freq:
+    while index < len(lst) and lst[index].freq >= val.freq: 
         index += 1
     lst.insert(index, val)
     return lst
 
+def translateText(message :str , dictionnaire :dict) :
+    resp = ''
+    for a in message :
+        resp += dictionnaire[a]
+
+def encodeWithFileAndWrite (pathInput:str, pathOutput:str, pathDictionnaire:str):
+    with open(pathInput,'r') as file:
+        message = file.read()
+        dictionnaire = coding(message)
+        newMessage =translateText(message , dictionnaire)
+        # 
+        while len(newMessage) %8 == 0:
+            newMessage+='0'
+        bytesList = [int(newMessage[i:i+8],2) for i in range (0, len(newMessage),8)]
+        
+        bytearray = bytearray(bytesList)
+
+        with open(pathInput ,'wb') as fileFinal:
+            fileFinal.write(bytearray)
+        # eto mbola tokony manoratra anaty dictionnaire
 
 
 # print(coding('BCCDACCBDABCCDEAAEDA')) 
