@@ -122,7 +122,7 @@ def dicoParse(dico :str):
         while i!=len(dico) and dico[i]!= ' ':
             code+=dico[i]
             i+=1
-        response[key]=code
+        response[code]=key
         i+=1
     return response
 
@@ -143,10 +143,23 @@ def decodeFromDictionaryAndCompressedFile (compressedFilePath :str, dicoPath: st
         binaryString = ''.join(format(byte, '08b') for byte in bytesList)
         # tsy alaina izany ny partie debordee amle binaryString
         binaryString = binaryString[:-1*debordementCount]
-        print(binaryString) 
+
+    # tetezina amzay ilay binaryString de sady mijery anle dictionnaire eo ampi decode azy
+    key =''        
+    decodedMessage = ''
+    for caract in binaryString:
+        key+=caract
+        # print(dictionnaire)
+        try:
+            decodedMessage+=dictionnaire[key]
+            key =''
+        except: pass            
+    return decodedMessage        
+
 
 # print(coding('BCCDACCBDABCCDEAAEDA')) 
+                
 
 # encodeWithFileAndWrite('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
 
-decodeFromDictionaryAndCompressedFile('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
+print( decodeFromDictionaryAndCompressedFile('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt'))
