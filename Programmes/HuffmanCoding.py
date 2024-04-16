@@ -78,4 +78,5 @@ def insert_sorted(lst:list[BinaryTree], val:BinaryTree):
 
 
 
-print(coding('BCCDACCBDABCCDEAAEDA')) 
+# print(coding('BCCDACCBDABCCDEAAEDA')) 
+
