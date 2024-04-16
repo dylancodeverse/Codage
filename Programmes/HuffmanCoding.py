@@ -13,6 +13,7 @@ class BinaryTree:
 def coding(message :str):
     # nodes ana prob miaraka amle caractere tries desc
     NodeDeProb = charcountDESC(message)
+    leafMarked = []
     while len(NodeDeProb) != 1:
         # jerena ny min anakiroa anle nodeDeProb
         min0 ,min1 = NodeDeProb[len(NodeDeProb)-2], NodeDeProb[len(NodeDeProb)-1]
@@ -28,26 +29,20 @@ def coding(message :str):
         NodeDeProb= NodeDeProb[:-2]
         # ezahina atsofoka ao anaty ilay list nodeDeProb ilay node vaovao
         NodeDeProb=insert_sorted(NodeDeProb,newNode)
-    # manomboka eto amzay anh ,manao parcours anle graphe en profondeur de mi stocker anle etiquette
-    pile =  deque()
-    pile.append(NodeDeProb[0])
-    lstArete = []
-    marked = []
+        if min0.leftChild is None :
+            leafMarked.append(min0)
+        if min1.leftChild is None:
+            leafMarked.append(min1)
+    # creer le dictionnaire des encodages
     dictionnaireDesEncodages = {}
-    while len(pile)!=0:
-        lastIn = pile.pop()
-        if lastIn not in marked :
-            marked.append(lastIn)
-            if lastIn.arete!=None:
-                lstArete.append(lastIn.arete)
-                # les voisiins du node
-            if lastIn.leftChild is not None : # raha tsy leaf 
-                pile.append(lastIn.leftChild)
-                pile.append(lastIn.rightChild)
-            else : # raha efa feuille
-                dictionnaireDesEncodages[lastIn.value]= "".join(str(x) for x in lstArete)
-                lstArete = lstArete[:-1]
-            
+    for xx in leafMarked :
+        code = str(xx.arete)
+        parent = xx.parent
+        while parent.arete is not None :
+            code =  str(parent.arete) + code 
+            parent = parent.parent
+        dictionnaireDesEncodages[xx.value]=code
+
     return dictionnaireDesEncodages
             
 
