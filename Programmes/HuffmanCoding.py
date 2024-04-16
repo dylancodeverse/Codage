@@ -62,7 +62,6 @@ def charcountDESC(message:str)->list[BinaryTree]:
         binary_tree = BinaryTree(char, freq)
         binary_trees.append(binary_tree)
 
-    print ("proba ="+ str(sorted_counts))
     return binary_trees
 
 
@@ -95,7 +94,7 @@ def encodeWithFileAndWrite (pathInput:str, pathOutput:str, pathDictionnaire:str)
         newMessage =translateText(message , dictionnaire)
         # fill par 0 mba ho feno araka ilay mandeha par 8 bits
         debordementcount = 0
-        while len(newMessage) %8 == 0:
+        while len(newMessage) %8 != 0:
             newMessage+='0'
             debordementcount+=1
         bytesList = [int(newMessage[i:i+8],2) for i in range (0, len(newMessage),8)]
@@ -107,42 +106,47 @@ def encodeWithFileAndWrite (pathInput:str, pathOutput:str, pathDictionnaire:str)
         newDictionnaireFormat =formatDict(dictionnaire)
         # stockage du dictionnaire et le debordement a la fin
         with open(pathDictionnaire,'w')  as dictFile :
-            dictFile.write(newDictionnaireFormat+' '+debordementcount)           
+            dictFile.write(newDictionnaireFormat+' '+str(debordementcount))           
 
 
 def dicoParse(dico :str):
     # efa tsisy anle debordement intsony
     response = {}
-    for i in range (0, len(str)):
+    i=0
+    while i < len(dico) :
         # alaina ny caractere voalohany
         key= dico[i]
+        i+=1
         # alaina ny manaraka rehetra jusqu'a espace voalohany
         code =''
-        while dico[i]!= ' ':
+        while i!=len(dico) and dico[i]!= ' ':
             code+=dico[i]
             i+=1
         response[key]=code
+        i+=1
     return response
 
 def decodeFromDictionaryAndCompressedFile (compressedFilePath :str, dicoPath: str):
     with open (dicoPath,'r') as dicoFile:
         dicoCode = dicoFile.read()
         # alaina lay partie mi deborde
-        debordementCount = dicoCode[len(dicoCode)-1]
+        debordementCount = int(dicoCode[len(dicoCode)-1])
         # reformat dicoCode sans debordement
         dicoCode = dicoCode[:-2]
         # le transformer en dico
         dictionnaire = dicoParse(dicoCode)
 
-
     with open(compressedFilePath,'rb') as cpFile:
-        x.rea()
-        pass 
+        contenu = cpFile.read()
+        # avadika en liste ana entier lay octets:
+        bytesList = list(contenu)
+        binaryString = ''.join(format(byte, '08b') for byte in bytesList)
+        # tsy alaina izany ny partie debordee amle binaryString
+        binaryString = binaryString[:-1*debordementCount]
+        print(binaryString) 
 
 # print(coding('BCCDACCBDABCCDEAAEDA')) 
 
 # encodeWithFileAndWrite('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
 
-with open('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt','rb') as x:
-    print(x.read()) 
-
+decodeFromDictionaryAndCompressedFile('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
