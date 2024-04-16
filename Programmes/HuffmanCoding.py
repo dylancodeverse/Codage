@@ -1,17 +1,18 @@
+from collections import deque
 
 class BinaryTree:
-    def __init__(self,value,freq,leftChild=None, rightChild=None, parent=None) ->  None:
+    def __init__(self,value,freq,leftChild=None, rightChild=None, parent=None,arete=None ) ->  None:
         self.value = value
         self.freq = freq
         self.leftChild = leftChild
         self.rightChild =rightChild
         self.parent = parent
+        self.arete = arete
 
 
 def coding(message :str):
     # nodes ana prob miaraka amle caractere tries desc
     NodeDeProb = charcountDESC(message)
-    nodesDone = []
     while NodeDeProb.count != 1:
         # jerena ny min anakiroa anle nodeDeProb
         min0 ,min1 = NodeDeProb[len(NodeDeProb)-2], NodeDeProb[len(NodeDeProb)-1]
@@ -20,14 +21,48 @@ def coding(message :str):
         # ovaina ny parent anle min anakiroa
         min0.parent = newNode
         min1.parent = newNode
-        # atsofoka anaty nodes ilay min anakiroa
-        nodesDone.append(min0)
-        nodesDone.append(min1)
+        # petahana lay valeur anle arete
+        min0.arete = 1
+        min1.arete=0
         # fafana tao anaty nodedeprob ilay min anakiroa
         NodeDeProb= NodeDeProb[:-2]
         # ezahina atsofoka ao anaty ilay list nodeDeProb ilay node vaovao
-        pass
+        NodeDeProb=insert_sorted(NodeDeProb,newNode)
+    # manomboka eto amzay anh ,manao parcours anle graphe en profondeur de mi stocker anle etiquette
+    pile =  deque()
+    pile.append(NodeDeProb[0])
+    lstArete = []
+    marked = []
+    dictionnaireDesEncodages = {}
+    while(len(pile)!=0):
+        lastIn = pile.pop()
+        if lastIn not in marked :
+            marked.append(lastIn)
+            if lastIn.arete!=None:
+                lstArete.append(lastIn.arete)
+                # les voisiins du node
+                if lastIn.lefChild is not None : # raha tsy leaf 
+                    pile.append(lastIn.leftChild)
+                    pile.append(lastIn.rightChild)
+                else : # raha efa feuille
+                    dictionnaireDesEncodages[lastIn.value]= "".join(str(x) for x in lstArete)
 
+    return dictionnaireDesEncodages
+            
+
+
+
+# parcoursProfondeurIter(graphe G, sommet s)
+#       p=creer_pile()
+#       p.empiler(s)
+#       tant que p est non vide
+#          s=p.depiler()
+#          si s n'est pas marqué
+#             marquer le sommet s
+#             afficher le sommet s
+#             pour tout sommet t voisin du sommet s
+#                si t n'est pas marqué
+#                    p.empiler(t)
 
 def charcountDESC(message:str)->list[BinaryTree]:
     counts = {}
@@ -48,8 +83,9 @@ def charcountDESC(message:str)->list[BinaryTree]:
 
 
 
-def insert_sorted(lst, val):
+def insert_sorted(lst:list[BinaryTree], val:BinaryTree):
     index = 0
-    while index < len(lst) and lst[index] >= val:
+    while index < len(lst) and lst[index].freq >= val.freq:
         index += 1
     lst.insert(index, val)
+    return lst
