@@ -47,8 +47,6 @@ def coding(message :str):
             
 
 
-
-
 def charcountDESC(message:str)->list[BinaryTree]:
     counts = {}
     for char in message:
@@ -81,6 +79,12 @@ def translateText(message :str , dictionnaire :dict) :
     for a in message :
         resp += dictionnaire[a]
 
+
+def formatDict(dictionnaire :dict):
+    rep =''
+    for key in dictionnaire.keys:
+        rep+= dictionnaire[key] +' '       
+    return rep[:-1]
 def encodeWithFileAndWrite (pathInput:str, pathOutput:str, pathDictionnaire:str):
     with open(pathInput,'r') as file:
         message = file.read()
@@ -95,7 +99,12 @@ def encodeWithFileAndWrite (pathInput:str, pathOutput:str, pathDictionnaire:str)
 
         with open(pathInput ,'wb') as fileFinal:
             fileFinal.write(bytearray)
-        # eto mbola tokony manoratra anaty dictionnaire
+        # stockage du dictionnaire 
+        # formater le dictionnaire
+        newDictionnaireFormat =formatDict(dictionnaire)
+
+        with open(pathDictionnaire,'w')  as dictFile :
+            dictFile.write(newDictionnaireFormat)           
 
 
 # print(coding('BCCDACCBDABCCDEAAEDA')) 
