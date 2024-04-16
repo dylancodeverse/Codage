@@ -13,7 +13,7 @@ class BinaryTree:
 def coding(message :str):
     # nodes ana prob miaraka amle caractere tries desc
     NodeDeProb = charcountDESC(message)
-    while NodeDeProb.count != 1:
+    while len(NodeDeProb) != 1:
         # jerena ny min anakiroa anle nodeDeProb
         min0 ,min1 = NodeDeProb[len(NodeDeProb)-2], NodeDeProb[len(NodeDeProb)-1]
         # mi former node vaovao as newNode
@@ -34,35 +34,25 @@ def coding(message :str):
     lstArete = []
     marked = []
     dictionnaireDesEncodages = {}
-    while(len(pile)!=0):
+    while len(pile)!=0:
         lastIn = pile.pop()
         if lastIn not in marked :
             marked.append(lastIn)
             if lastIn.arete!=None:
                 lstArete.append(lastIn.arete)
                 # les voisiins du node
-                if lastIn.lefChild is not None : # raha tsy leaf 
-                    pile.append(lastIn.leftChild)
-                    pile.append(lastIn.rightChild)
-                else : # raha efa feuille
-                    dictionnaireDesEncodages[lastIn.value]= "".join(str(x) for x in lstArete)
-
+            if lastIn.leftChild is not None : # raha tsy leaf 
+                pile.append(lastIn.leftChild)
+                pile.append(lastIn.rightChild)
+            else : # raha efa feuille
+                dictionnaireDesEncodages[lastIn.value]= "".join(str(x) for x in lstArete)
+                lstArete = lstArete[:-1]
+            
     return dictionnaireDesEncodages
             
 
 
 
-# parcoursProfondeurIter(graphe G, sommet s)
-#       p=creer_pile()
-#       p.empiler(s)
-#       tant que p est non vide
-#          s=p.depiler()
-#          si s n'est pas marqué
-#             marquer le sommet s
-#             afficher le sommet s
-#             pour tout sommet t voisin du sommet s
-#                si t n'est pas marqué
-#                    p.empiler(t)
 
 def charcountDESC(message:str)->list[BinaryTree]:
     counts = {}
@@ -75,11 +65,12 @@ def charcountDESC(message:str)->list[BinaryTree]:
     sorted_counts = dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
     # Creer une liste de BinaryTree 
     binary_trees = []
-    for char, freq in sorted_counts:
+    for char, freq in sorted_counts.items():
         binary_tree = BinaryTree(char, freq)
         binary_trees.append(binary_tree)
 
-    return sorted_counts
+    print ("proba ="+ str(sorted_counts))
+    return binary_trees
 
 
 
@@ -89,3 +80,7 @@ def insert_sorted(lst:list[BinaryTree], val:BinaryTree):
         index += 1
     lst.insert(index, val)
     return lst
+
+
+
+print(coding('BCCDACCBDABCCDEAAEDA')) 
