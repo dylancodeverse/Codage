@@ -100,3 +100,8 @@ def decodeMessage(encodedMessage: str , dictionnaire :dict):
     return decodedMessage
 
 
+# Soit t un texte en anglais dans un fichier texte.txt. Proposez une façon de compresser le
+# texte en utilisant le codage de Huffman. Implanter votre proposition.
+
+
+    
