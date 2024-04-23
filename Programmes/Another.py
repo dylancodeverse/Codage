@@ -83,7 +83,7 @@ def translateText(message :str , dictionnaire :dict) :
 def messageToCodedMessage (message :str ):
     dictionnaire = coding(message)
     newMessage =translateText(message , dictionnaire)
-    return newMessage 
+    return newMessage ,dictionnaire
 
 # un programme qui prend en paramètre un mot/texte codé selon le codage de Huffman
 # de la question 1:(a) et renvoie le mot/texte initial.
@@ -103,5 +103,74 @@ def decodeMessage(encodedMessage: str , dictionnaire :dict):
 # Soit t un texte en anglais dans un fichier texte.txt. Proposez une façon de compresser le
 # texte en utilisant le codage de Huffman. Implanter votre proposition.
 
+def formatDict(dictionnaire :dict):
+    rep =''
+    for key in dictionnaire.keys():
+        rep+= key+ dictionnaire[key] +' '       
+    return rep[:-1]
 
-    
+def compressMessage(pathInput:str, pathOutput:str, pathDictionnaire:str):
+    with open(pathInput,'r') as file:
+        message = file.read()
+        newMessage , dictionnaire= messageToCodedMessage (message)
+        # fill par 0 mba ho feno araka ilay mandeha par 8 bits
+        debordementcount = 0
+        while len(newMessage) %8 != 0:
+            newMessage+='0'
+            debordementcount+=1
+        bytesList = [int(newMessage[i:i+8],2) for i in range (0, len(newMessage),8)]
+        byteArray = bytearray(bytesList)
+        # stocker-na ilay izy compressed 
+        with open(pathOutput ,'wb') as fileFinal:
+            fileFinal.write(byteArray)
+        # formater le dictionnaire
+        newDictionnaireFormat =formatDict(dictionnaire)
+        # stockage du dictionnaire et le debordement a la fin
+        with open(pathDictionnaire,'w')  as dictFile :
+            dictFile.write(newDictionnaireFormat+' '+str(debordementcount))           
+
+
+# Écrire un algorithme permettant de décompresser le fichier obtenu dans la question précédente.
+# Implanter votre algorithme.
+            
+
+def dicoParse(dico :str):
+    # efa tsisy anle debordement intsony
+    response = {}
+    i=0
+    while i < len(dico) :
+        # alaina ny caractere voalohany
+        key= dico[i]
+        i+=1
+        # alaina ny manaraka rehetra jusqu'a espace voalohany
+        code =''
+        while i!=len(dico) and dico[i]!= ' ':
+            code+=dico[i]
+            i+=1
+        response[code]=key
+        i+=1
+    return response
+
+def decodeFromDictionaryAndCompressedFile (compressedFilePath :str, dicoPath: str):
+    with open (dicoPath,'r') as dicoFile:
+        dicoCode = dicoFile.read()
+        # alaina lay partie mi deborde
+        debordementCount = int(dicoCode[len(dicoCode)-1])
+        # reformat dicoCode sans debordement
+        dicoCode = dicoCode[:-2]
+        # le transformer en dico
+        dictionnaire = dicoParse(dicoCode)
+
+    with open(compressedFilePath,'rb') as cpFile:
+        contenu = cpFile.read()
+        # avadika en liste ana entier lay octets:
+        bytesList = list(contenu)
+        binaryString = ''.join(format(byte, '08b') for byte in bytesList)
+        # tsy alaina izany ny partie debordee amle binaryString
+        binaryString = binaryString[:-1*debordementCount]
+
+    # tetezina amzay ilay binaryString de sady mijery anle dictionnaire eo ampi decode azy
+
+    return decodeMessage(binaryString,dictionnaire)
+
+                    
