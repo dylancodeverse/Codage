@@ -2,9 +2,9 @@ from collections import deque
 
 class BinaryTree:
     def __init__(self,value,freq,leftChild=None, rightChild=None, parent=None,arete=None ) ->  None:
-        self.value = value
-        self.freq = freq
-        self.leftChild = leftChild
+        self.value = value #lettre
+        self.freq = freq   # miverina impiry 
+        self.leftChild = leftChild   
         self.rightChild =rightChild
         self.parent = parent
         self.arete = arete
