@@ -132,7 +132,7 @@ def decimalEnBinairePositif (nombre :float, precision =200):
     return resultEntiere +'.' + (resultDecimale)
 
 
-print(decimalEnBinairePositif(29.75))
+# print(decimalEnBinairePositif(0.1))
 
 def complementADeux(binaire:str):
     newbin=''
@@ -178,5 +178,5 @@ def reelEnBinaire (reel :str , precision:int) :
 
     return representationEnBinaire
 
-print(reelEnBinaire('-29.75',4))
+# print(reelEnBinaire('-29.75',4))
 
