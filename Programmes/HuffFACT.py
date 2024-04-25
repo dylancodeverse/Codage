@@ -10,6 +10,9 @@ class BinaryTree:
         self.parent = parent
         self.arete = arete
 
+    def getEnfants (self)->list:
+        return [self.rightChild ,self.leftChild]        
+
 
 def charcountDESC(message:str)->list[BinaryTree]:
     counts = {}
@@ -70,6 +73,24 @@ def coding(message :str):
             parent = parent.parent
         dictionnaireDesEncodages[xx.value]=code
 
+
+    # affichage de la graphe
+    print(NodeDeProb[0].freq)        
+    enfants = NodeDeProb[0].getEnfants()
+    i = 0
+    while(len(enfants)!=0):
+        print( str(i) +" niveau :")
+        for single in enfants:
+
+            print(str(single.freq) +" "+str(single.value)+" ")
+        another = [] 
+        for single in enfants:
+            if single.leftChild is not None:
+                another.append(single.leftChild)       
+            if single.rightChild is not None:
+                another.append(single.rightChild)
+        enfants = another
+        i+=1        
     return dictionnaireDesEncodages        
 
 # programme qui prend en paramètre un mot/texte de S et renvoie le mot/texte codé par le codage de Huffman précédent
@@ -175,6 +196,6 @@ def decodeFromDictionaryAndCompressedFile (compressedFilePath :str, dicoPath: st
 
 
 
-# compressMessage('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
+compressMessage('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
 
 # print( decodeFromDictionaryAndCompressedFile('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt' ))
