@@ -77,7 +77,7 @@ def getMinToSuppr(myList) :
         nToSuppr+=1
         listOfList= generateListToSuppr(nToSuppr,myList)
         for xx in listOfList:
-            if estCeUnCode(xx):
+            if estCeUnCode(suppr(myList,xx)):
 
                 print(xx)
                 print('nanala:')
