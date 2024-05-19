@@ -196,6 +196,6 @@ def decodeFromDictionaryAndCompressedFile (compressedFilePath :str, dicoPath: st
 
 
 
-compressMessage('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
+# compressMessage('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/input.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt', 'C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt')
 
 # print( decodeFromDictionaryAndCompressedFile('C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/output.txt','C:/Users/MISA/Desktop/Workspace/S6/Codage/Programmes/dict.txt' ))
