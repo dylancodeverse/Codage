@@ -45,6 +45,8 @@ def unionlangage(langageListe : list[str] , langageListe2 :list[str]):
     return langageListe            
 
 
+print(estCeUnCode(['0', '0110', '001', '10100', '101011']))
+
 # print( estCeUnCode(['1','00','01','10']))
 
 
@@ -86,7 +88,7 @@ def getMinToSuppr(myList) :
 
 
     
-(getMinToSuppr(['0','01','100','010']))    
+# (getMinToSuppr(['0','01','100','010']))    
 
 
 
