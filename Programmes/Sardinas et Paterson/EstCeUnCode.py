@@ -45,6 +45,7 @@ def unionlangage(langageListe : list[str] , langageListe2 :list[str]):
     return langageListe            
 
 
+print(estCeUnCode(['1', '00110', '01', '11', '0', '10', '010', '0001011', '01011']))
 print(estCeUnCode(['0', '0110', '001', '10100', '101011']))
 
 # print( estCeUnCode(['1','00','01','10']))
