@@ -31,26 +31,55 @@ class SimilarityAnalysis:
     def getLevenshteinDistance(str1, str2)->int:
         return Levenshtein.distance(str1, str2)
 
-
-    #  Longest Common Subsequence (LCS)
-    @staticmethod 
-    def LCS(str1 ,str2) -> int :
+    @staticmethod
+    def getAVGLevenshteinDistance(strings :list[str]):
         """
-        La plus longue sous-séquence commune est une mesure 
+            calcul de LevenshteinDistance moyenne pour une liste de string
+        """
+        listLevenshteinDistance =[]
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                listLevenshteinDistance.append(SimilarityAnalysis.getLevenshteinDistance(strings[i],strings[j]))
+        return sum(listLevenshteinDistance) / len(listLevenshteinDistance)
+
+
+    @staticmethod 
+    def LCS_prefix_suffix(str1:str, str2:str) -> int:
+        """
+        La plus longue sous-séquence commune prefix suffix est une mesure 
         de la similarité entre deux chaînes en trouvant 
         la plus longue séquence de caractères qui apparaît dans 
-        les deux chaînes dans le même ordre.
+        les deux chaînes dans le même ordre, en tant que préfixe 
+        ou suffixe dans chaque chaîne.
+        (implementation specifique)
         """
-        m = len(str1)
-        n = len(str2)
-        L = [[0] * (n + 1) for i in range(m + 1)]
-        for i in range(m + 1):
-            for j in range(n + 1):
-                if i == 0 or j == 0:
-                    L[i][j] = 0
-                elif str1[i - 1] == str2[j - 1]:
-                    L[i][j] = L[i - 1][j - 1] + 1
-                else:
-                    L[i][j] = max(L[i - 1][j], L[i][j - 1])
-        return L[m][n]
-    
+        # etude du prefixe de str2
+        cumulPrefixStr1PrefixStr2= ''
+        for a in str2 :
+            if str1.startswith(cumulPrefixStr1PrefixStr2+a):
+                cumulPrefixStr1PrefixStr2+=cumulPrefixStr1PrefixStr2+a
+            else:
+                break                
+        cumulSuffixStr1PrefixStr2= ''
+        for a in str2 :
+            if str1.endswith(cumulSuffixStr1PrefixStr2+a):
+                cumulSuffixStr1PrefixStr2+=cumulSuffixStr1PrefixStr2+a
+            else:
+                break
+        # etude du suffixe de str2
+        reversedStr2 =  str2[::-1]            
+        
+        cumulPrefixStr1SuffixStr2= ''
+
+                    
+
+
+
+
+
+
+# Exemple d'utilisation
+str1 = "abcdef"
+str2 = "cdefgh"
+resultat = SimilarityAnalysis.LCS_prefix_suffix(str1, str2)
+print("Longest Common Subsequence (Prefix and Suffix):", resultat)
