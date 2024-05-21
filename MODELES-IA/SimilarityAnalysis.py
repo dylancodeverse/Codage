@@ -44,32 +44,42 @@ class SimilarityAnalysis:
 
 
     @staticmethod 
-    def LCS_prefix_suffix(str1:str, str2:str) -> int:
+    def prefix_suffix_similarity(str1:str, str2:str) -> int:
         """
-        La plus longue sous-séquence commune prefix suffix est une mesure 
-        de la similarité entre deux chaînes en trouvant 
-        la plus longue séquence de caractères qui apparaît dans 
-        les deux chaînes dans le même ordre, en tant que préfixe 
-        ou suffixe dans chaque chaîne.
+        Noter la similitude entre les bouts des deux strings.
         (implementation specifique)
         """
+        if (str1== str2) :
+            return len(str1)
+
         # etude du prefixe de str2
         cumulPrefixStr1PrefixStr2= ''
         for a in str2 :
             if str1.startswith(cumulPrefixStr1PrefixStr2+a):
-                cumulPrefixStr1PrefixStr2+=cumulPrefixStr1PrefixStr2+a
+                cumulPrefixStr1PrefixStr2+=a
             else:
                 break                
         cumulSuffixStr1PrefixStr2= ''
         for a in str2 :
             if str1.endswith(cumulSuffixStr1PrefixStr2+a):
-                cumulSuffixStr1PrefixStr2+=cumulSuffixStr1PrefixStr2+a
+                cumulSuffixStr1PrefixStr2+=a
             else:
                 break
         # etude du suffixe de str2
         reversedStr2 =  str2[::-1]            
-        
         cumulPrefixStr1SuffixStr2= ''
+        for a in reversedStr2 :
+            if str1.startswith(a+ cumulPrefixStr1SuffixStr2):
+                cumulPrefixStr1SuffixStr2=a+cumulPrefixStr1SuffixStr2
+            else:
+                break      
+        cumulSuffixStr1SuffixStr2= ''                
+        for a in reversedStr2 :
+            if str1.endswith(a+cumulSuffixStr1SuffixStr2):
+                cumulSuffixStr1SuffixStr2=a+cumulSuffixStr1SuffixStr2
+            else:
+                break                      
+        return len(cumulPrefixStr1PrefixStr2)+len(cumulSuffixStr1PrefixStr2)+ len(cumulPrefixStr1SuffixStr2) + len(cumulSuffixStr1SuffixStr2)                 
 
                     
 
@@ -78,8 +88,8 @@ class SimilarityAnalysis:
 
 
 
-# Exemple d'utilisation
-str1 = "abcdef"
-str2 = "cdefgh"
-resultat = SimilarityAnalysis.LCS_prefix_suffix(str1, str2)
-print("Longest Common Subsequence (Prefix and Suffix):", resultat)
+# # Exemple d'utilisation
+# str1 = "bone"
+# str2 = "bonnes"
+# resultat = SimilarityAnalysis.prefix_suffix_similarity(str1, str2)
+# print("Longest Common Subsequence (Prefix and Suffix):", resultat)
