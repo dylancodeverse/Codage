@@ -95,12 +95,37 @@ class SimilarityAnalysis:
 
 
 
+    @staticmethod
+    def getNumberOfWords(strings:list[str]):
+        """
+            tsisy antony manokana nanaovako anty moa zany
+            fa tiko centralisena tato ftsn moa tiko mora vakiana
+            le pourquoi avy eo rehefa hi generer anle donnees
+        """
+        return len(str)
+    
+    @staticmethod
+    def getFrequency(strings:list[str],string):
+        frequence = 0
+        for x in strings:
+            for a in x :
+                if a == string:
+                    frequence+=1
+        return frequence
+    @staticmethod
+    def getNWordWithSameSize(strings:list[str]):
+        n = 0
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                if len(strings[i]) == len (strings[j]):
+                    n+=1
+        return 1
+    @staticmethod
+    def getAVGWordSize(strings:list[str]):
+        listSize=[]
+        for string in strings:
+            listSize.append(len(string))
+        return sum(listSize)/len(strings)            
 
 
 
-
-# # Exemple d'utilisation
-# str1 = "bone"
-# str2 = "bonnes"
-# resultat = SimilarityAnalysis.prefix_suffix_similarity(str1, str2)
-# print("Longest Common Subsequence (Prefix and Suffix):", resultat)
