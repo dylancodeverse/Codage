@@ -82,6 +82,17 @@ class SimilarityAnalysis:
         return len(cumulPrefixStr1PrefixStr2)+len(cumulSuffixStr1PrefixStr2)+ len(cumulPrefixStr1SuffixStr2) + len(cumulSuffixStr1SuffixStr2)                 
 
                     
+    @staticmethod
+    def getAVGprefix_suffix_similarity(strings :list[str]):
+        """
+            calcul de prefix_suffix_similarity moyenne pour une liste de string
+        """
+        prefixsuffixsimilaritynote =[]
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                prefixsuffixsimilaritynote.append(SimilarityAnalysis.prefix_suffix_similarity(strings[i],strings[j]))
+        return sum(prefixsuffixsimilaritynote) / len(prefixsuffixsimilaritynote)
+
 
 
 
