@@ -10,13 +10,10 @@ def getAllPossibleWords(word_min =1,word_max=7):
     return words
 
 # 254!/(2!(254-2)!) + 254!/(3!(254-3)!) + 254!/(4!(254-4)!) + 254!/(5!(254-5)!) +
-# 254!/(6!(254-6)!) + 254!/(7!(254-7)!) + 254!/(8!(254-8)!) + 254!/(9!(254-9)!) + 254!/(10!(254-10)!)
+#  254!/(6!(254-6)!) + 254!/(7!(254-7)!) + 254!/(8!(254-8)!) + 254!/(9!(254-9)!) + 254!/(10!(254-10)!)
 
 # 268 331 787 405 251 911 possibilities
-def generatePossibilities(codePath ="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/codeDatas.txt",
-                          noCodePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/notCodeDatas.txt",
-                          lan_min =2 , lan_max=4,word_min =1,word_max=7):
-    with open(codePath,'a') as codee , open(noCodePath) as notcodee:
+def generatePossibilities(lan_min =2 , lan_max=2,word_min =1,word_max=7):
         # generer toutes les possibilites pour les mots
         allWords = getAllPossibleWords(word_min,word_max)
         print(len(allWords))
@@ -31,3 +28,7 @@ def generatePossibilities(codePath ="C:/Users/MISA/Desktop/Workspace/S6/Codage/M
                 languages.append(oneElement)
         return languages
 
+print( len(generatePossibilities()))
+# test = [[2,4],[2,3]]
+
+# print([2,4] in test)

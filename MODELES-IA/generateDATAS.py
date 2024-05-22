@@ -1,7 +1,7 @@
 import random
 import sys
 sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
-import Programmes.SardinasPaterson.SardinasPaterson as  SardinasPaterson
+from Programmes.SardinasPaterson.SardinasPaterson  import SardinasPaterson as sardina
 
 # 254 possibilites
 def generateBinaryWord(min_length=1, max_length=7):
@@ -23,14 +23,33 @@ def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
     # averina en tant que liste
     return setofwords 
 
-print(list(generateLanguage()))
+# print(list(generateLanguage()))
 
-def generateNLanguages(size = 5000 ):
-    code = set()
-    notCode = set()
+def generateNLanguages(size = 100000 ):
+    code = []
+    i = 0
+    notCode = []
     while len(code)+len(notCode)!=size :
-        language = generateLanguage()
-
+        language = list( generateLanguage())
+                
+        if sardina.estCeUnCode(language):
+            if language not in code:
+                if len(language)==2 and i <500:
+                    i+=1
+                    code.append(language)
+                else :                    
+                    code.append(language)
+        else :
+            if language not in notCode:
+                notCode.append(language)           
+        print(len(code)+len(notCode))                     
+    print('---')
+    print(i)    
+    return code ,notCode
+ 
+code , notcode= generateNLanguages() 
+print (len(code) )
+print(len(notcode))
 
 
 

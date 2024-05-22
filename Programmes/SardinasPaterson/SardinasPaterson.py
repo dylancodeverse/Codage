@@ -3,7 +3,8 @@ from itertools import combinations
 class SardinasPaterson:
 
     @staticmethod
-    def estCeUnCode (langageListe :list[str]) ->bool:
+    
+    def  estCeUnCode (langageListe :list[str]) ->bool:
         listanaL = [langageListe]
         l1= SardinasPaterson.eliminateEpsilon( SardinasPaterson.residuel(langageListe,langageListe))
         if (len(l1)==0):
