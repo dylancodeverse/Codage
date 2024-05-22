@@ -44,6 +44,7 @@ class Language :
             print('export csv....')
             with open(exp[i],'w',newline='') as filee:
                 writer= csv.DictWriter(filee,fieldnames=header)
+                writer.writeheader()
                 for langg in lan [i] :
                     writer.writerow(
                     {
