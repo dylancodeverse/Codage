@@ -1,5 +1,6 @@
 import random
 import sys
+import ast
 sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
 from Programmes.SardinasPaterson.SardinasPaterson  import SardinasPaterson as sardina
 
@@ -51,9 +52,10 @@ def generateNLanguages(
             print(len(code)+len(notCode))                     
         return code ,notCode
  
-code , notcode= generateNLanguages() 
-print (len(code) )
-print(len(notcode))
+# code , notcode= generateNLanguages() 
+# print (len(code) )
+# print(len(notcode))
+    
 
 
 

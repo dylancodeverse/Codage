@@ -1,15 +1,33 @@
 
 import SimilarityAnalysis
-
+import ast
 class Language :
-    def __init__(self , isCode, language:list[str]) -> None:
+    def __init__(self , isCode:bool, language:list[str]) -> None:
         self.isCode = isCode
         self.wordsLen = len(language)
-        self.setZeroLen_OneLen(self,language) 
-        self.setWordsWithSameSizeLen_AVGWordsSize(self,language)
-        self.setAVGDiffRatio(self,language)
-        self.setAVGDistancedeLevenshtein(self,language)
-        self.setAVGSimilarityendstart(self,language)
+        self.setZeroLen_OneLen(language) 
+        self.setWordsWithSameSizeLen_AVGWordsSize(language)
+        self.setAVGDiffRatio(language)
+        self.setAVGDistancedeLevenshtein(language)
+        self.setAVGSimilarityendstart(language)
+
+    @staticmethod
+    def createLanguagesFromData(codePath , notCodePath)->list['Language']:
+        listCodes =[]
+        listNotCodes = []
+        with open(codePath ,'r') as codeFile , open(notCodePath ,'r') as notCodeFile:
+            for line in codeFile:
+                lineList =ast.literal_eval(line.strip())
+                listCodes.append(lineList)
+            for line in notCodeFile :
+                lineList =ast.literal_eval(line.strip())
+                listNotCodes.append(lineList)
+        listLanguageCodes = []
+        listLanguageNotCodes = []
+        for code in listCodes :
+            listLanguageCodes.append(Language(True,code))
+        for notCode in listNotCodes :
+            listLanguageNotCodes.append(Language(False,notCode)) 
 
     def setZeroLen_OneLen (self , language:list[str]):
         self.zeroLen =  0
@@ -40,3 +58,8 @@ class Language :
 
     def setAVGSimilarityendstart(self,language ):
         self.AVGSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getAVGprefix_suffix_similarity(language)
+
+
+codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/codeDatas.txt"
+notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/notCodeDatas.txt"
+Language.createLanguagesFromData(codePath, notCodePath)

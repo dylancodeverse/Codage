@@ -25,6 +25,8 @@ class SimilarityAnalysis:
         for i in range(0,len(strings)) :
             for j in range (i+1,len(strings)):
                 listRatio.append(SimilarityAnalysis.getRatio(strings[i],strings[j]))
+        if (len(listRatio)==0):
+            return 0                
         return sum(listRatio) / len(listRatio)
 
     @staticmethod 
@@ -40,6 +42,8 @@ class SimilarityAnalysis:
         for i in range(0,len(strings)) :
             for j in range (i+1,len(strings)):
                 listLevenshteinDistance.append(SimilarityAnalysis.getLevenshteinDistance(strings[i],strings[j]))
+        if (len(listLevenshteinDistance)==0):
+            return 0                 
         return sum(listLevenshteinDistance) / len(listLevenshteinDistance)
 
 
@@ -91,6 +95,8 @@ class SimilarityAnalysis:
         for i in range(0,len(strings)) :
             for j in range (i+1,len(strings)):
                 prefixsuffixsimilaritynote.append(SimilarityAnalysis.prefix_suffix_similarity(strings[i],strings[j]))
+        if (len(prefixsuffixsimilaritynote)==0):
+            return 0                 
         return sum(prefixsuffixsimilaritynote) / len(prefixsuffixsimilaritynote)
 
     
