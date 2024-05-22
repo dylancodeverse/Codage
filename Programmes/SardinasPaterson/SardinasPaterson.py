@@ -5,10 +5,12 @@ class SardinasPaterson:
     @staticmethod
     
     def  estCeUnCode (langageListe :list[str]) ->bool:
+
         listanaL = [langageListe]
         l1= SardinasPaterson.eliminateEpsilon( SardinasPaterson.residuel(langageListe,langageListe))
         if (len(l1)==0):
-            return False
+            return True
+
         listanaL.append(l1)
         while True :
             lnplusun = SardinasPaterson.unionlangage(SardinasPaterson.residuel(langageListe,listanaL[-1]), SardinasPaterson.residuel(listanaL[-1],langageListe))
@@ -61,7 +63,7 @@ class SardinasPaterson:
 # print(estCeUnCode(['000', '010', '011', '01001'])) 
 
 # print(estCeUnCode(['0','01','101','110','11']))
-
+print(SardinasPaterson.estCeUnCode(['0']))
 # listTo = ['0','01','101','110']
 
 def generateListToSuppr(nToSuppr,myList):
