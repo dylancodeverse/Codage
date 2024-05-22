@@ -51,7 +51,7 @@ def getAllPossibleWords(word_min =1,word_max=7):
             words.append(''.join([str(element) for element in pr])) 
     return words
 
-generatePossibilities()
+# generatePossibilities()
 
 # 254!/(2!(254-2)!) + 254!/(3!(254-3)!) + 254!/(4!(254-4)!) + 254!/(5!(254-5)!) +
 # 254!/(6!(254-6)!) + 254!/(7!(254-7)!) + 254!/(8!(254-8)!) + 254!/(9!(254-9)!) + 254!/(10!(254-10)!)
