@@ -25,27 +25,31 @@ def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
 
 # print(list(generateLanguage()))
 
-def generateNLanguages(size = 100000 ):
+def generateNLanguages(
+        codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/codeDatas.txt",
+        notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/notCodeDatas.txt",
+        size = 100000 ):
     code = []
-    i = 0
     notCode = []
-    while len(code)+len(notCode)!=size :
-        language = list( generateLanguage())
-                
-        if sardina.estCeUnCode(language):
-            if language not in code:
-                if len(language)==2 and i <500:
-                    i+=1
-                    code.append(language)
-                else :                    
-                    code.append(language)
-        else :
-            if language not in notCode:
-                notCode.append(language)           
-        print(len(code)+len(notCode))                     
-    print('---')
-    print(i)    
-    return code ,notCode
+    with open(codePath ,'a') as codeFile , open(notCodePath ,'a') as notCodeFile:
+        i = 0
+        while len(code)+len(notCode)!=size :
+            language = list( generateLanguage())
+            if sardina.estCeUnCode(language):
+                if language not in code:
+                    if len(language)==2 and i <500:
+                        i+=1
+                        code.append(language)
+                        codeFile.write(str(language)+'\n')
+                    else :                    
+                        code.append(language)
+                        codeFile.write(str(language)+'\n')
+            else :
+                if language not in notCode:
+                    notCode.append(language)           
+                    notCodeFile.write(str(language)+'\n')
+            print(len(code)+len(notCode))                     
+        return code ,notCode
  
 code , notcode= generateNLanguages() 
 print (len(code) )
