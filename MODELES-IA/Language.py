@@ -26,7 +26,7 @@ class Language :
         self.AVGWordsSize = 0
         sizeWord = []
         for i in range(0,len(language)):
-            sizeWord.append(language[i])
+            sizeWord.append(len(language[i]))
             for j in range(i+1,len(language)):
                 if len(language[i]) == len(language[j]):
                      self.ordsWithSameSizeLen+=1
@@ -37,5 +37,6 @@ class Language :
 
     def setAVGDistancedeLevenshtein(self,language ):
         self.AVGDistancedeLevenshtein = SimilarityAnalysis.SimilarityAnalysis.getAVGLevenshteinDistance(language)
+
     def setAVGSimilarityendstart(self,language ):
         self.AVGSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getAVGprefix_suffix_similarity(language)

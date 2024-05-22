@@ -93,16 +93,6 @@ class SimilarityAnalysis:
                 prefixsuffixsimilaritynote.append(SimilarityAnalysis.prefix_suffix_similarity(strings[i],strings[j]))
         return sum(prefixsuffixsimilaritynote) / len(prefixsuffixsimilaritynote)
 
-
-
-    @staticmethod
-    def getNumberOfWords(strings:list[str]):
-        """
-            tsisy antony manokana nanaovako anty moa zany
-            fa tiko centralisena tato ftsn moa tiko mora vakiana
-            le pourquoi avy eo rehefa hi generer anle donnees
-        """
-        return len(str)
     
     @staticmethod
     def getFrequency(strings:list[str],string):
@@ -120,12 +110,7 @@ class SimilarityAnalysis:
                 if len(strings[i]) == len (strings[j]):
                     n+=1
         return 1
-    @staticmethod
-    def getAVGWordSize(strings:list[str]):
-        listSize=[]
-        for string in strings:
-            listSize.append(len(string))
-        return sum(listSize)/len(strings)            
+
 
 
 
