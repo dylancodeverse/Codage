@@ -1,5 +1,10 @@
 import random
+import sys
+sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
+import Programmes.SardinasPaterson.SardinasPaterson as  SardinasPaterson
 
+
+# 254 possibilites
 def generateBinaryWord(min_length=1, max_length=7):
     # Tokony fantarina alony hoe firy lay alavany
     size = random.randint(min_length, max_length)
@@ -8,6 +13,7 @@ def generateBinaryWord(min_length=1, max_length=7):
         response += str(random.randint(0, 1))
     return response
 
+# 13970 possibilites
 def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
     # Tokony fantarina tsotra hoe anakifiry lay word generer-na
     size = random.randint(lan_min, lan_max)
@@ -17,6 +23,4 @@ def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
     while len(setofwords)!=size :
         setofwords.add(generateBinaryWord(word_min,word_max)) 
     # averina en tant que liste
-    return list(setofwords)        
-
-print(generateLanguage())
+    return setofwords 

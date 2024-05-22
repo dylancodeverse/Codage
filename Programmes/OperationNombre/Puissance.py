@@ -36,8 +36,10 @@ def evaluationEnBaseDecimaleRuffiniHorner(nombre :str , baseDOrigine:int):
 
 
 depart = 0
-for i in range (0,6):
+for i in range (1,8):
     depart +=  puissanceIterative(2,i)
     print(depart)
 
-print(puissanceRecursive(2 ,6) )    
+print(254*sum([1,2,3,4,5,6,7,8,9,10]))    
+
+# print(puissanceRecursive(2 ,6) )    
