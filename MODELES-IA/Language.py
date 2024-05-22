@@ -6,7 +6,7 @@ import csv
 
 
 class Language :
-    def __init__(self , isCode:bool, language:list[str]) -> None:
+    def __init__(self , isCode, language:list[str]) -> None:
         self.isCode = isCode
         self.wordsLen = len(language)
         self.setZeroLen_OneLen(language) 
@@ -78,9 +78,9 @@ class Language :
         listLanguageCodes = []
         listLanguageNotCodes = []
         for code in listCodes :
-            listLanguageCodes.append(Language(True,code))
+            listLanguageCodes.append(Language(1,code))
         for notCode in listNotCodes :
-            listLanguageNotCodes.append(Language(False,notCode)) 
+            listLanguageNotCodes.append(Language(0,notCode)) 
         return listLanguageCodes,listLanguageNotCodes            
 
     def setZeroLen_OneLen (self , language:list[str]):
@@ -114,10 +114,10 @@ class Language :
         self.AVGSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getAVGprefix_suffix_similarity(language)
 
 
-codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/codeDatas.txt"
-notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/notCodeDatas.txt"
-expcodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/dataCode.csv"
-expnotCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/datanotCode.csv"
+codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt"
+notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt"
+expcodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
+expnotCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
 
 Language.exportDataAsCSV(codePath=codePath ,exportedCode=expcodePath,exportedNotCode=expnotCodePath,notCodePath=notCodePath)
 

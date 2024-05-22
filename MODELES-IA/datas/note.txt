@@ -1,5 +1,0 @@
-Dans les donnees statiques:
-
- 15244 sont codes
-
- 84756 ne sont pas codes
