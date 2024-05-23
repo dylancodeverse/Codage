@@ -1,6 +1,6 @@
 import random
 import sys
-import ast
+import time
 sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
 from Programmes.SardinasPaterson.SardinasPaterson  import SardinasPaterson as sardina
 
@@ -27,12 +27,12 @@ def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
 # print(list(generateLanguage()))
 
 def generateNLanguages(
-        codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/codeDatas.txt",
-        notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/notCodeDatas.txt",
+        codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt",
+        notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt",
         size = 100000 ):
     code = []
     notCode = []
-    with open(codePath ,'a') as codeFile , open(notCodePath ,'a') as notCodeFile:
+    with open(codePath ,'w') as codeFile , open(notCodePath ,'w') as notCodeFile:
         i = 0
         while len(code)+len(notCode)!=size :
             language = list( generateLanguage())
@@ -42,7 +42,7 @@ def generateNLanguages(
                         i+=1
                         code.append(language)
                         codeFile.write(str(language)+'\n')
-                    else :                    
+                    elif len(language)!=2 :                    
                         code.append(language)
                         codeFile.write(str(language)+'\n')
             else :
@@ -52,7 +52,9 @@ def generateNLanguages(
             print(len(code)+len(notCode))                     
         return code ,notCode
  
-# code , notcode= generateNLanguages() 
+timesf = time.time()
+code , notcode= generateNLanguages() 
+print(str(time.time()-timesf)+'second')
 # print (len(code) )
 # print(len(notcode))
     

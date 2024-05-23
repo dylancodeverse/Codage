@@ -28,6 +28,19 @@ class SimilarityAnalysis:
         if (len(listRatio)==0):
             return 0                
         return sum(listRatio) / len(listRatio)
+    
+    @staticmethod 
+    def getTotalRatio(strings :list[str]):
+        """
+            calcul de ratio total pour une liste de string
+        """
+        listRatio =[]
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                listRatio.append(SimilarityAnalysis.getRatio(strings[i],strings[j]))
+        if (len(listRatio)==0):
+            return 0                
+        return sum(listRatio)     
 
     @staticmethod 
     def getLevenshteinDistance(str1, str2)->int:
@@ -46,6 +59,18 @@ class SimilarityAnalysis:
             return 0                 
         return sum(listLevenshteinDistance) / len(listLevenshteinDistance)
 
+    @staticmethod
+    def getTotalLevenshteinDistance(strings :list[str]):
+        """
+            calcul de LevenshteinDistance total pour une liste de string
+        """
+        listLevenshteinDistance =[]
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                listLevenshteinDistance.append(SimilarityAnalysis.getLevenshteinDistance(strings[i],strings[j]))
+        if (len(listLevenshteinDistance)==0):
+            return 0                 
+        return sum(listLevenshteinDistance) 
 
     @staticmethod 
     def prefix_suffix_similarity(str1:str, str2:str) -> int:
@@ -87,7 +112,7 @@ class SimilarityAnalysis:
 
                     
     @staticmethod
-    def getAVGprefix_suffix_similarity(strings :list[str]):
+    def getTotalprefix_suffix_similarity(strings :list[str]):
         """
             calcul de prefix_suffix_similarity moyenne pour une liste de string
         """
@@ -97,7 +122,7 @@ class SimilarityAnalysis:
                 prefixsuffixsimilaritynote.append(SimilarityAnalysis.prefix_suffix_similarity(strings[i],strings[j]))
         if (len(prefixsuffixsimilaritynote)==0):
             return 0                 
-        return sum(prefixsuffixsimilaritynote) / len(prefixsuffixsimilaritynote)
+        return sum(prefixsuffixsimilaritynote) 
 
     
     @staticmethod
@@ -115,7 +140,9 @@ class SimilarityAnalysis:
             for j in range (i+1,len(strings)):
                 if len(strings[i]) == len (strings[j]):
                     n+=1
-        return 1
+        return n
+
+
 
 
 

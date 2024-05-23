@@ -10,11 +10,28 @@ class Language :
         self.isCode = isCode
         self.wordsLen = len(language)
         self.setZeroLen_OneLen(language) 
-        self.setWordsWithSameSizeLen_AVGWordsSize(language)
-        self.setAVGDiffRatio(language)
-        self.setAVGDistancedeLevenshtein(language)
-        self.setAVGSimilarityendstart(language)
+        self.setWordsWithSameSizeLen_TotalWordsSize(language)
+        self.setTotalDiffRatio(language)
+        self.setTotalDistancedeLevenshtein(language)
+        self.setTotalSimilarityendstart(language)
         self.label = str(language)
+        # ampiana kely hoe
+        # self.set
+
+    @staticmethod 
+    def getHeader():
+        return [   
+                        "label",
+                        "isCode",
+                        "wordsLen",
+                        "ZeroLen",
+                        "OneLen",
+                        "WordsWithSameSizeLen",
+                        "TotalWordsSize",
+                        "TotalDiffRatio",
+                        "TotalDistancedeLevenshtein",
+                        "TotalSimilarityendstart"
+                    ]
 
     @staticmethod
     def exportDataAsCSV(exportedCode ,exportedNotCode , codePath,notCodePath):
@@ -28,18 +45,7 @@ class Language :
         exp = [exportedCode, exportedNotCode ]
 
         for i in range(len(lan)) :
-            header =[   
-                        "label",
-                        "isCode",
-                        "wordsLen",
-                        "ZeroLen",
-                        "OneLen",
-                        "WordsWithSameSizeLen",
-                        "AVGWordsSize",
-                        "AVGDiffRatio",
-                        "AVGDistancedeLevenshtein",
-                        "AVGSimilarityendstart"
-                    ]
+            header = Language.getHeader()
             fsec= (time.time())
             print('export csv....')
             with open(exp[i],'w',newline='') as filee:
@@ -54,10 +60,10 @@ class Language :
                         ,"ZeroLen":langg.zeroLen
                         ,"OneLen":langg.oneLen
                         ,"WordsWithSameSizeLen":langg.wordsWithSameSizeLen
-                        ,"AVGWordsSize":langg.AVGWordsSize
-                        ,"AVGDiffRatio":langg.AVGDiffRatio
-                        ,"AVGDistancedeLevenshtein":langg.AVGDistancedeLevenshtein
-                        ,"AVGSimilarityendstart":langg.AVGSimilarityendstart
+                        ,"TotalWordsSize":langg.TotalWordsSize
+                        ,"TotalDiffRatio":langg.TotalDiffRatio
+                        ,"TotalDistancedeLevenshtein":langg.TotalDistancedeLevenshtein
+                        ,"TotalSimilarityendstart":langg.TotalSimilarityendstart
                     })
             print(time.time()-fsec)
 
@@ -93,25 +99,42 @@ class Language :
                 elif letter == '1':
                     self.oneLen+=1
 
-    def setWordsWithSameSizeLen_AVGWordsSize (self , language):
+    def setWordsWithSameSizeLen_TotalWordsSize (self , language):
         self.wordsWithSameSizeLen = 0
-        self.AVGWordsSize = 0
+        self.TotalWordsSize = 0
         sizeWord = []
+        x = {"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0}
         for i in range(0,len(language)):
-            sizeWord.append(len(language[i]))
-            for j in range(i+1,len(language)):
-                if len(language[i]) == len(language[j]):
-                     self.wordsWithSameSizeLen+=1
-        self.AVGWordsSize = sum(sizeWord)/len(language)            
+            leen =len(language[i])
+            sizeWord.append(leen)
+            x[str(leen)] +=1
+        
+        if x["1"] > 1 :
+            self.wordsWithSameSizeLen += x["1"]
+        if x["2"] > 1 :
+            self.wordsWithSameSizeLen += x["2"]
+        if x["3"] > 1 :
+            self.wordsWithSameSizeLen += x["3"]
+        if x["4"] > 1 :
+            self.wordsWithSameSizeLen += x["4"]
+        if x["5"] > 1 :
+            self.wordsWithSameSizeLen += x["5"]
+        if x["6"] > 1 :
+            self.wordsWithSameSizeLen += x["6"]
+        if x["7"] > 1 :
+            self.wordsWithSameSizeLen += x["7"]
 
-    def setAVGDiffRatio(self,language ):
-        self.AVGDiffRatio = SimilarityAnalysis.SimilarityAnalysis.getAVGRatio(language)
 
-    def setAVGDistancedeLevenshtein(self,language ):
-        self.AVGDistancedeLevenshtein = SimilarityAnalysis.SimilarityAnalysis.getAVGLevenshteinDistance(language)
+        self.TotalWordsSize = sum(sizeWord)            
 
-    def setAVGSimilarityendstart(self,language ):
-        self.AVGSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getAVGprefix_suffix_similarity(language)
+    def setTotalDiffRatio(self,language ):
+        self.TotalDiffRatio = SimilarityAnalysis.SimilarityAnalysis.getTotalRatio(language)
+
+    def setTotalDistancedeLevenshtein(self,language ):
+        self.TotalDistancedeLevenshtein = SimilarityAnalysis.SimilarityAnalysis.getTotalLevenshteinDistance(language)
+
+    def setTotalSimilarityendstart(self,language ):
+        self.TotalSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getTotalprefix_suffix_similarity(language)
 
 
 codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt"

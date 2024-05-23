@@ -63,7 +63,7 @@ class SardinasPaterson:
 # print(estCeUnCode(['000', '010', '011', '01001'])) 
 
 # print(estCeUnCode(['0','01','101','110','11']))
-print(SardinasPaterson.estCeUnCode(['0']))
+# print(SardinasPaterson.estCeUnCode(['0']))
 # listTo = ['0','01','101','110']
 
 def generateListToSuppr(nToSuppr,myList):
@@ -103,4 +103,7 @@ def getMinToSuppr(myList) :
 
 
 
+print(SardinasPaterson.estCeUnCode(['1010101', '011']))
 
+print(SardinasPaterson.estCeUnCode(['00', '11110', '0001110', '1', '0', '00010', '100', '10', '110011', '0001']
+))
