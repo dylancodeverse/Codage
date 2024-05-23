@@ -34,7 +34,13 @@ class Language :
                     ]
 
     @staticmethod
-    def exportDataAsCSV(exportedCode ,exportedNotCode , codePath,notCodePath):
+    def exportDataAsCSV(
+                             exportedCode ="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
+                            ,exportedNotCode="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
+                            ,codePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt"
+                            ,notCodePath ="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt"
+                        ):
+
         fsec= (time.time())
         print('first step loading....')
         one ,two =Language.createLanguagesFromData(codePath, notCodePath)
@@ -68,6 +74,23 @@ class Language :
             print(time.time()-fsec)
 
 
+    @staticmethod
+    def createTrainingDataAndPredictData(
+                             codePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
+                            ,notCodePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
+                            ,trainingDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/training/Training.csv"
+                            ,predictDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/training/ToPredict.csv"
+                        ):
+        with open(codePath,'r') as codeFile , open(notCodePath,'r') as notCodeFile , open(trainingDataPath,'w') as trainingFile , open(predictDataPath,'w') as predictFile:
+            codeLines =  codeFile.readlines()            
+            notCodeLines = notCodeFile.readlines()
+
+            trainingFile.writelines(codeLines[0:2501])
+            trainingFile.writelines(notCodeLines[1:2501])
+
+            predictFile.write(codeLines[0])
+            predictFile.writelines(codeLines[2501:])
+            predictFile.writelines(notCodeLines[2501:])
 
 
     @staticmethod
@@ -137,12 +160,9 @@ class Language :
         self.TotalSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getTotalprefix_suffix_similarity(language)
 
 
-codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt"
-notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt"
-expcodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
-expnotCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
 
-Language.exportDataAsCSV(codePath=codePath ,exportedCode=expcodePath,exportedNotCode=expnotCodePath,notCodePath=notCodePath)
+# Language.exportDataAsCSV()
+Language.createTrainingDataAndPredictData()
 
 
 
