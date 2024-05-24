@@ -26,6 +26,16 @@ def generateLanguage(lan_min =1 , lan_max=10,word_min =1,word_max=7):
 
 # print(list(generateLanguage()))
 
+def getLangageAvecDesLongueursFixes():
+    listLanguage = []
+    while len(listLanguage) < 500:
+        words = random.randint(3,10)
+        wordLongFix = random.randint(4,7)
+        language = list(generateLanguage(words,words,wordLongFix,wordLongFix))
+        if language not in listLanguage:
+            listLanguage.append(language)
+    return listLanguage    
+
 def generateNLanguages(
         codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt",
         notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt",
@@ -33,15 +43,28 @@ def generateNLanguages(
     code = []
     notCode = []
     with open(codePath ,'w') as codeFile , open(notCodePath ,'w') as notCodeFile:
-        i = 0
+        pair = 0
+        unSeulElement = 0
+        # generer donnee ana langage avec des longueurs fixes
+        code = getLangageAvecDesLongueursFixes()
+        for element in code :
+            codeFile.write(str(element)+'\n')        
+
         while len(code)+len(notCode)!=size :
             language = list( generateLanguage())
             if sardina.estCeUnCode(language):
                 if language not in code:
-                    if len(language)==2 and i <500:
-                        i+=1
+                    # donnee ana langage 2 elements
+                    if len(language)==2 and pair <100:
+                        pair+=1
                         code.append(language)
                         codeFile.write(str(language)+'\n')
+                    # donnee ana langage a 1 element 
+                    elif len(language)== 1 and unSeulElement < 100:
+                        unSeulElement+1    
+                        code.append(language)
+                        codeFile.write(str(language)+'\n')
+                    #donnee norma 
                     elif len(language)!=2 :                    
                         code.append(language)
                         codeFile.write(str(language)+'\n')
@@ -52,12 +75,12 @@ def generateNLanguages(
             print(len(code)+len(notCode))                     
         return code ,notCode
  
+#  generate datas
 timesf = time.time()
 code , notcode= generateNLanguages() 
-print(str(time.time()-timesf)+'second')
-# print (len(code) )
-# print(len(notcode))
-    
-
-
-
+print(str((time.time()-timesf)/60)+'second')
+print ('les codes : '+str(len(code)) )
+print('les non codes: '+str(len(notcode)))
+# ---------------
+# print(156/60)
+# print(getLangageAvecDesLongueursFixes()) 

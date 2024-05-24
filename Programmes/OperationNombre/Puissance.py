@@ -36,10 +36,13 @@ def evaluationEnBaseDecimaleRuffiniHorner(nombre :str , baseDOrigine:int):
 
 
 depart = 0
-for i in range (1,8):
-    depart +=  puissanceIterative(2,i)
-    print(depart)
+div =[2,2,2,4,4,4,8,8,8,8,8]
+a=0
+for i in range (3,11):
+    depart +=  puissanceIterative(2,i)/div[a]
+    a+=1
+    print(str(puissanceIterative(2,i))+"de lasa"+str(puissanceIterative(2,i)/div[a])+"ka manome"+str(depart))
 
-print(254*sum([1,2,3,4,5,6,7,8,9,10]))    
+# print(254*sum([1,2,3,4,5,6,7,8,9,10]))    
 
 # print(puissanceRecursive(2 ,6) )    
