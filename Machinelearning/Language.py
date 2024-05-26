@@ -1,10 +1,9 @@
-
+import sys
+sys.path.append("C:/Users/MISA/Desktop/Workspace/S6/Python/Codage")
 import analysis.SimilarityAnalysis as SimilarityAnalysis
 import ast
 import time
 import csv
-import sys
-sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
 import Programmes.OperationNombre.BaseToBase as B
 import joblib
 import numpy as np
@@ -22,7 +21,7 @@ class Language :
         self.setRepresentationEnBase10(language)
         # ampiana kely hoe
         # self.set
-    def predict(self,modelPath='C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/randomforestModel/Predict.joblib'):
+    def predict(self,modelPath='C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/randomforestModel/Predict.joblib'):
         model = joblib.load(modelPath)
         datas =np.array([[self.wordsLen,self.zeroLen,self.oneLen,self.wordsWithSameSizeLen,self.TotalWordsSize,self.TotalDiffRatio,self.TotalDistancedeLevenshtein,self.TotalSimilarityendstart,self.isLongueurFixe,self.one,self.two,self.three,self.four,self.five,self.six,self.seven,self.eight,self.nine,self.ten,self.coloneLen,self.coltwoLen,self.colthreeLen,self.colfourLen,self.colfiveLen,self.colsixLen,self.colsevenLen,self.coleightLen,self.colnineLen,self.coltenLen,self.coloneZeroFreq,self.coloneOneFreq,self.coltwoZeroFreq,self.coltwoOneFreq,self.colthrZeroFreq,self.colthrOneFreq,self.colfouZeroFreq,self.colfouOneFreq,self.colfivZeroFreq,self.colfivOneFreq,self.colsixZeroFreq,self.colsixOneFreq,self.colsevZeroFreq,self.colsevOneFreq,self.coleigZeroFreq,self.coleigOneFreq,self.colninZeroFreq,self.colninOneFreq,self.coltenZeroFreq,self.coltenOneFreq]])
         print(datas)
@@ -86,10 +85,10 @@ class Language :
 
     @staticmethod
     def exportDataAsCSV(
-                             exportedCode ="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
-                            ,exportedNotCode="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
-                            ,codePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt"
-                            ,notCodePath ="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt"
+                             exportedCode ="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/All/dataCode.csv"
+                            ,exportedNotCode="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/All/datanotCode.csv"
+                            ,codePath="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/NotPreparedTemp/codeDatas.txt"
+                            ,notCodePath ="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/NotPreparedTemp/notCodeDatas.txt"
                         ):
 
         fsec= (time.time())
@@ -168,10 +167,10 @@ class Language :
 
     @staticmethod
     def createTrainingDataAndPredictData(
-                             codePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/dataCode.csv"
-                            ,notCodePath="C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/All/datanotCode.csv"
-                            ,trainingDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/training/Training.csv"
-                            ,predictDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/training/ToPredict.csv"
+                             codePath="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/All/dataCode.csv"
+                            ,notCodePath="C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/All/datanotCode.csv"
+                            ,trainingDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/training/Training.csv"
+                            ,predictDataPath = "C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/datas/training/ToPredict.csv"
                         ):
         with open(codePath,'r') as codeFile , open(notCodePath,'r') as notCodeFile , open(trainingDataPath,'w') as trainingFile , open(predictDataPath,'w') as predictFile:
             codeLines =  codeFile.readlines()            

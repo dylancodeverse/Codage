@@ -1,7 +1,7 @@
 import random
 import sys
 import time
-sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Codage")
+sys.path.append("c:/Users/MISA/Desktop/Workspace/S6/Python/Codage")
 from Programmes.SardinasPaterson.SardinasPaterson  import SardinasPaterson as sardina
 
 # 254 possibilites
@@ -37,8 +37,8 @@ def getLangageAvecDesLongueursFixes():
     return listLanguage    
 
 def generateNLanguages(
-        codePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt",
-        notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt",
+        codePath = "C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/MODELES-IA/datas/NotPreparedTemp/codeDatas.txt",
+        notCodePath = "C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/MODELES-IA/datas/NotPreparedTemp/notCodeDatas.txt",
         size = 100000 ):
     code = []
     notCode = []
