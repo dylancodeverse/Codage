@@ -1,0 +1,3 @@
+Dans les donnees statiques:
+les codes : 28899
+les non codes: 71101

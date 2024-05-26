@@ -1,0 +1,10 @@
+5000 donnees :
+- 2500 codes:
+    inferieur a 200 longueur 2
+    inferieur a 200 longueur 1
+    inferieur a 500 longueur fixe
+		
+
+
+
+- 2500 tsy codes

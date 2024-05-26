@@ -103,7 +103,7 @@ def getMinToSuppr(myList) :
 
 
 
-print(SardinasPaterson.estCeUnCode(['1010101', '011']))
+# print(SardinasPaterson.estCeUnCode(['1010101', '011']))
 
-print(SardinasPaterson.estCeUnCode(['00', '11110', '0001110', '1', '0', '00010', '100', '10', '110011', '0001']
-))
+# print(SardinasPaterson.estCeUnCode(['00', '11110', '0001110', '1', '0', '00010', '100', '10', '110011', '0001']
+# ))
