@@ -34,7 +34,6 @@ class Language :
                         ,"wordsLen"
                         ,"ZeroLen"
                         ,"OneLen"
-                        ,"WordsWithSameSizeLen"
                         ,"TotalWordsSize"
                         ,"TotalDiffRatio"
                         ,"TotalDistancedeLevenshtein"
@@ -48,7 +47,6 @@ class Language :
                         ,"wordsLen":self.wordsLen
                         ,"ZeroLen":self.zeroLen
                         ,"OneLen":self.oneLen
-                        ,"WordsWithSameSizeLen":self.wordsWithSameSizeLen
                         ,"TotalWordsSize":self.TotalWordsSize
                         ,"TotalDiffRatio":self.TotalDiffRatio
                         ,"TotalDistancedeLevenshtein":self.TotalDistancedeLevenshtein
@@ -58,7 +56,7 @@ class Language :
 
     def values(self):
         return [self.label ,self.isCode, self.wordsLen,
-                self.zeroLen , self.oneLen , self.wordsWithSameSizeLen,
+                self.zeroLen , self.oneLen ,
                 self.TotalWordsSize ,self.TotalDiffRatio,
                 self.TotalDistancedeLevenshtein,
                 self.TotalSimilarityendstart, self.isLongueurFixe]
