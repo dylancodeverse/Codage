@@ -18,7 +18,8 @@ class Language :
         self.setTotalSimilarityendstart(language)
         self.setIsLongueurFixe(language)
         self.label = str(language)
-        self.setKraftMcMilanSatisfied(language)
+        # self.setKraftMcMilanSatisfied(language)
+        self.setplusLongueSimilitudeRatioPlusieurs(language)
         # ampiana kely hoe
         # self.set
     def predict(self,modelPath='C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/randomforestModel/Predict.joblib'):
@@ -41,8 +42,9 @@ class Language :
                         ,"TotalDistancedeLevenshtein"
                         ,"TotalSimilarityendstart"
                         ,"isLongueurFixe"
-                        ,"kraftMcMilanSatisfied"
+                        # ,"kraftMcMilanSatisfied"
                         ,"WordsWithSameSizeLen"
+                        ,"plusLongueSimilitudeRatioPlusieurs"
                     ]
     def dictValues (self):
         return {
@@ -56,8 +58,9 @@ class Language :
                         ,"TotalDistancedeLevenshtein":self.TotalDistancedeLevenshtein
                         ,"TotalSimilarityendstart":self.TotalSimilarityendstart
                         ,"isLongueurFixe":self.isLongueurFixe
-                        ,"kraftMcMilanSatisfied":self.kraftMcMilanSatisfied
+                        # ,"kraftMcMilanSatisfied":self.kraftMcMilanSatisfied
                         ,"WordsWithSameSizeLen":self.wordsWithSameSizeLen
+                        ,"plusLongueSimilitudeRatioPlusieurs":self.plusLongueSimilitudeRatioPlusieurs
                     }
 
     def values(self):
@@ -67,8 +70,9 @@ class Language :
                 self.TotalDistancedeLevenshtein,
                 self.TotalSimilarityendstart, 
                 self.isLongueurFixe,
-                self.kraftMcMilanSatisfied,
+                # self.kraftMcMilanSatisfied,
                 self.wordsWithSameSizeLen
+                ,self.plusLongueSimilitudeRatioPlusieurs
                 ]
 
 
@@ -187,6 +191,9 @@ class Language :
     def setTotalSimilarityendstart(self,language ):
         self.TotalSimilarityendstart = SimilarityAnalysis.SimilarityAnalysis.getTotalprefix_suffix_similarity(language)
 
+    def setplusLongueSimilitudeRatioPlusieurs(self,language):
+        self.plusLongueSimilitudeRatioPlusieurs = SimilarityAnalysis.SimilarityAnalysis.plusLongueSimilitudeRatioPlusieurs(language)
+
     def setIsLongueurFixe(self,language):
         oneLen = len(language[0])
         for element in language[1:]:
@@ -204,8 +211,7 @@ class Language :
         else:
             self.kraftMcMilanSatisfied = 0
 
-# Language.exportDataAsCSV()
-# ( Language.createTrainingDataAndPredictData())
+
 
 # import Programmes.SardinasPaterson.SardinasPaterson as sardina
 

@@ -72,6 +72,27 @@ class SimilarityAnalysis:
             return 0                 
         return sum(listLevenshteinDistance) 
 
+    @staticmethod
+    def plusLongueSimilitudeRatio(str1 : str , str2) -> float :
+        # str 1 par rapport a str2
+        minSize = min(len(str1),len(str2))
+        score = 0
+        for i in range (0,minSize):
+            if str1[i] != str2[i] :
+                break
+            score+1    
+        return score/minSize
+    
+    @staticmethod
+    def plusLongueSimilitudeRatioPlusieurs (strings:list[str]):
+        temp = 0
+        for i in range(0,len(strings)) :
+            for j in range (i+1,len(strings)):
+                maxx = max(temp,SimilarityAnalysis.plusLongueSimilitudeRatio(strings[i],strings[j]))
+                temp = maxx
+        return temp
+    
+
     @staticmethod 
     def prefix_suffix_similarity(str1:str, str2:str) -> int:
         """
