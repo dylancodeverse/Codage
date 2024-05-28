@@ -18,6 +18,7 @@ class Language :
         self.setTotalSimilarityendstart(language)
         self.setIsLongueurFixe(language)
         self.label = str(language)
+        self.setKraftMcMilanSatisfied(language)
         # ampiana kely hoe
         # self.set
     def predict(self,modelPath='C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/randomforestModel/Predict.joblib'):
@@ -40,6 +41,7 @@ class Language :
                         ,"TotalDistancedeLevenshtein"
                         ,"TotalSimilarityendstart"
                         ,"isLongueurFixe"
+                        ,"kraftMcMilanSatisfied"
                     ]
     def dictValues (self):
         return {
@@ -53,6 +55,7 @@ class Language :
                         ,"TotalDistancedeLevenshtein":self.TotalDistancedeLevenshtein
                         ,"TotalSimilarityendstart":self.TotalSimilarityendstart
                         ,"isLongueurFixe":self.isLongueurFixe
+                        ,"kraftMcMilanSatisfied":self.kraftMcMilanSatisfied
                     }
 
     def values(self):
@@ -61,7 +64,8 @@ class Language :
                 self.TotalWordsSize ,self.TotalDiffRatio,
                 self.TotalDistancedeLevenshtein,
                 self.TotalSimilarityendstart, 
-                self.isLongueurFixe]
+                self.isLongueurFixe,
+                self.kraftMcMilanSatisfied]
 
 
     @staticmethod
@@ -187,7 +191,13 @@ class Language :
                 return
         self.isLongueurFixe =1
 
-
+    def setKraftMcMilanSatisfied(self,language):
+        summ = 0
+        for element in language:
+            summ+=2**-len(element)
+        if summ <=1:
+            self.kraftMcMilanSatisfied = 1
+        self.kraftMcMilanSatisfied = 0
 
 # Language.exportDataAsCSV()
 # ( Language.createTrainingDataAndPredictData())
