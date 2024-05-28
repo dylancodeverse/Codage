@@ -65,7 +65,8 @@ class Language :
                 self.TotalDistancedeLevenshtein,
                 self.TotalSimilarityendstart, 
                 self.isLongueurFixe,
-                self.kraftMcMilanSatisfied]
+                self.kraftMcMilanSatisfied
+                ]
 
 
     @staticmethod
@@ -197,7 +198,8 @@ class Language :
             summ+=2**-len(element)
         if summ <=1:
             self.kraftMcMilanSatisfied = 1
-        self.kraftMcMilanSatisfied = 0
+        else:
+            self.kraftMcMilanSatisfied = 0
 
 # Language.exportDataAsCSV()
 # ( Language.createTrainingDataAndPredictData())
