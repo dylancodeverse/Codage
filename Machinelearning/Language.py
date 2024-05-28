@@ -204,8 +204,8 @@ class Language :
         else:
             self.kraftMcMilanSatisfied = 0
 
-Language.exportDataAsCSV()
-( Language.createTrainingDataAndPredictData())
+# Language.exportDataAsCSV()
+# ( Language.createTrainingDataAndPredictData())
 
 # import Programmes.SardinasPaterson.SardinasPaterson as sardina
 
