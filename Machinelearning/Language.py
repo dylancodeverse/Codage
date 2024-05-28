@@ -23,6 +23,7 @@ class Language :
     def predict(self,modelPath='C:/Users/MISA/Desktop/Workspace/S6/Python/Codage/Machinelearning/randomforestModel/Predict.joblib'):
         model = joblib.load(modelPath)
         datas =np.array([self.values()[2:]])
+        print(datas)
         # print(datas)
         return model.predict(datas)
 
@@ -59,7 +60,8 @@ class Language :
                 self.zeroLen , self.oneLen ,
                 self.TotalWordsSize ,self.TotalDiffRatio,
                 self.TotalDistancedeLevenshtein,
-                self.TotalSimilarityendstart, self.isLongueurFixe]
+                self.TotalSimilarityendstart, 
+                self.isLongueurFixe]
 
 
     @staticmethod
