@@ -42,6 +42,7 @@ class Language :
                         ,"TotalSimilarityendstart"
                         ,"isLongueurFixe"
                         ,"kraftMcMilanSatisfied"
+                        ,"WordsWithSameSizeLen"
                     ]
     def dictValues (self):
         return {
@@ -56,6 +57,7 @@ class Language :
                         ,"TotalSimilarityendstart":self.TotalSimilarityendstart
                         ,"isLongueurFixe":self.isLongueurFixe
                         ,"kraftMcMilanSatisfied":self.kraftMcMilanSatisfied
+                        ,"WordsWithSameSizeLen":self.wordsWithSameSizeLen
                     }
 
     def values(self):
@@ -65,7 +67,8 @@ class Language :
                 self.TotalDistancedeLevenshtein,
                 self.TotalSimilarityendstart, 
                 self.isLongueurFixe,
-                self.kraftMcMilanSatisfied
+                self.kraftMcMilanSatisfied,
+                self.wordsWithSameSizeLen
                 ]
 
 
@@ -201,8 +204,8 @@ class Language :
         else:
             self.kraftMcMilanSatisfied = 0
 
-# Language.exportDataAsCSV()
-# ( Language.createTrainingDataAndPredictData())
+Language.exportDataAsCSV()
+( Language.createTrainingDataAndPredictData())
 
 # import Programmes.SardinasPaterson.SardinasPaterson as sardina
 
